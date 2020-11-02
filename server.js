@@ -9,13 +9,13 @@ function handleRequest(request, response) {
 
   // Send the below string to the client when the user visits the PORT URL
   // response.end("It Works!! Path Hit: " + request.url);
-  response.end("it works! " + parseUserID(request.url))
+  response.end("it works! " + parseUrlElements(request.url))
 }
 
 // TO DO :
 // I have to parse out the request.url stuff to identify the $$USER.ID params being sent and the $$SESSION.ID
 
-function parseUserID(requestURLGoesHere) {
+function parseUrlElements(requestURLGoesHere) {
   var url_array = requestURLGoesHere.split('=')
   console.log(url_array);
 
