@@ -12,14 +12,17 @@ function handleRequest(request, response) {
   // do the parseURL elements function
   parseUrlElements(request.url)
 
-
-
   // Send the below string to the client when the user visits the PORT URL
   response.end("it works! " )
-}
 
-// TO DO :
-// I have to parse out the request.url stuff to identify the $$USER.ID params being sent and the $$SESSION.ID
+  //TO DO:
+  // I need to write my response back to the requestor 
+  // I need to pretitfy it
+  // I likely need to filter on the ones that I want
+  // Then comes the method of selecting a chunk of userPref
+  // then I make a call to delete that user pref
+  
+}
 
 function parseUrlElements(requestURLGoesHere) {
   var url_array = requestURLGoesHere.split('&')
@@ -42,10 +45,11 @@ function getUserPreferenceAPI(urlArrayNotComplete) {
   console.log(tempArray)
   var userID = tempArray[0]
   var sessionID = tempArray[1]
+  var domain = tempArray[2]
 
     // do the axios call 
     axios
-    .get("https://xandercanedo.my.workfront.com/attask/api-unsupported/userpf/search?sessionID=" + sessionID)
+    .get("https://" + domain + ".my.workfront.com/attask/api-unsupported/userpf/search?sessionID=" + sessionID)
     .then(function(response) {
       // if axios successful
       console.log(response.data)
@@ -67,6 +71,7 @@ function getUserPreferenceAPI(urlArrayNotComplete) {
       }
       console.log(error.config);
     });
+    
 
 }
 
