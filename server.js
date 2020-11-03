@@ -1,5 +1,7 @@
 // Require/import the HTTP module
 var http = require("http");
+// import axios
+var axios = require("axios");
 
 // Define a port to listen for incoming requests
 var PORT = 8080;
@@ -7,9 +9,11 @@ var PORT = 8080;
 // Create a generic function to handle requests and responses
 function handleRequest(request, response) {
 
+  // do the parseURL elements function
+  parseUrlElements(request.url)
+
   // Send the below string to the client when the user visits the PORT URL
-  // response.end("It Works!! Path Hit: " + request.url);
-  response.end("it works! " + parseUrlElements(request.url))
+  response.end("it works! " )
 }
 
 // TO DO :
