@@ -16,8 +16,24 @@ function handleRequest(request, response) {
 // I have to parse out the request.url stuff to identify the $$USER.ID params being sent and the $$SESSION.ID
 
 function parseUrlElements(requestURLGoesHere) {
-  var url_array = requestURLGoesHere.split('=')
+  var url_array = requestURLGoesHere.split('&')
   console.log(url_array);
+  console.log("-------")
+  getUserPreferenceAPI(url_array)
+}
+
+function getUserPreferenceAPI(urlArrayNotComplete) {
+  tempArray = [];
+  for (i = 0; i < urlArrayNotComplete.length; i++) {
+    str = urlArrayNotComplete[i]
+    indexOfEquals = str.search("=")
+    var niceString = str.slice(indexOfEquals+1)
+    tempArray.push(niceString)
+
+  }
+
+  console.log(tempArray)
+
 
 }
 
